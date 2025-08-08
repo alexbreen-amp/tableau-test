@@ -1,41 +1,63 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Tableau Feedback</title>
-    <style>
-        /* Add basic styling for the button to look good in Tableau */
-        body { font-family: sans-serif; display: flex; align-items: center; justify-content: center; margin: 0; height: 100vh; }
-        #feedbackBtn {
-            padding: 8px 16px;
-            font-size: 14px;
-            font-weight: bold;
-            color: #fff;
-            background-color: #007bff; /* Blue button */
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        #feedbackBtn:hover { background-color: #0056b3; }
-    </style>
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Feedback Received</title>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #f0f4ff, #e8f8ff);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .card {
+      background-color: white;
+      padding: 2rem 3rem;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      text-align: center;
+      max-width: 400px;
+      animation: fadeIn 0.8s ease;
+    }
+    h1 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: #333;
+    }
+    p {
+      font-size: 1rem;
+      color: #555;
+    }
+    a {
+      color: #4a6cf7;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
 
 <script src="https://cdn.amplitude.com/script/3d55f7e7c19d6f084a063c0151297291.js"></script><script>window.amplitude.add(window.sessionReplay.plugin({sampleRate: 1}));window.amplitude.init('3d55f7e7c19d6f084a063c0151297291', {"fetchRemoteConfig":true,"autocapture":true});</script>
 
 <script src="https://cdn.amplitude.com/script/3d55f7e7c19d6f084a063c0151297291.engagement.js"></script>
 <script>amplitude.add(window.engagement.plugin())</script>
-
-<script type="text/javascript"> 
-engagement.init("3d55f7e7c19d6f084a063c0151297291", {
-  serverZone: "US"
-});
-</script>
-
-
+  
 </head>
-
 <body>
-
-    <button id="feedbackBtn">Report a Data Issue</button>
-
+  <div class="card">
+    <h1>✅ Thank you for sharing your feedback!</h1>
+    <p>We're on it. You can view the status of your request in 
+      <a href="https://slack.com/app_redirect?channel=consumption-feedback" target="_blank">#consumption-feedback</a>.
+    </p>
+  </div>
 </body>
 </html>
