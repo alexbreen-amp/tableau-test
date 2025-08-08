@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tableau Feedback</title>
+    <style>
+        /* Add basic styling for the button to look good in Tableau */
+        body { font-family: sans-serif; display: flex; align-items: center; justify-content: center; margin: 0; height: 100vh; }
+        #feedbackBtn {
+            padding: 8px 16px;
+            font-size: 14px;
+            font-weight: bold;
+            color: #fff;
+            background-color: #007bff; /* Blue button */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #feedbackBtn:hover { background-color: #0056b3; }
+    </style>
+
+
+<script src="https://cdn.amplitude.com/script/3d55f7e7c19d6f084a063c0151297291.js"></script><script>window.amplitude.add(window.sessionReplay.plugin({sampleRate: 1}));window.amplitude.init('3d55f7e7c19d6f084a063c0151297291', {"fetchRemoteConfig":true,"autocapture":true});</script>
+
+<script src="https://cdn.amplitude.com/script/3d55f7e7c19d6f084a063c0151297291.engagement.js"></script>
+<script>amplitude.add(window.engagement.plugin())</script>
+
+<script type="text/javascript"> 
+engagement.init("3d55f7e7c19d6f084a063c0151297291", {
+  serverZone: "US"
+});
+</script>
+
+
+</head>
+
+<body>
+
+    <button id="feedbackBtn">Report a Data Issue</button>
+
+</body>
+</html>
