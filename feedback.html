@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Feedback Form</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #f0f4ff, #e8f8ff);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 1rem;
+    }
+    
+    .feedback-card {
+      background-color: white;
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      width: 100%;
+      max-width: 400px;
+      animation: fadeIn 0.8s ease;
+    }
+    
+    .feedback-card h1 {
+      font-size: 1.25rem;
+      margin: 0 0 1.5rem 0;
+      color: #333;
+      text-align: center;
+      font-weight: 600;
+    }
+    
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    
+    label {
+      display: block;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: #555;
+      margin-bottom: 0.5rem;
+    }
+    
+    textarea {
+      width: 100%;
+      min-height: 120px;
+      padding: 0.75rem;
+      border: 2px solid #e5e7eb;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 0.875rem;
+      line-height: 1.5;
+      resize: vertical;
+      transition: border-color 0.2s ease;
+    }
+    
+    textarea:focus {
+      outline: none;
+      border-color: #4a6cf7;
+      box-shadow: 0 0 0 3px rgba(74, 108, 247, 0.1);
+    }
+    
+    textarea::placeholder {
+      color: #9ca3af;
+    }
+    
+    .submit-btn {
+      width: 100%;
+      padding: 0.75rem 1.5rem;
+      background-color: #4a6cf7;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    
+    .submit-btn:hover {
+      background-color: #3b5ce6;
+      transform: translateY(-1px);
+    }
+    
+    .submit-btn:active {
+      transform: translateY(0);
+    }
+    
+    .submit-btn:disabled {
+      background-color: #9ca3af;
+      cursor: not-allowed;
+      transform: none;
+    }
+    
+    @keyframes fadeIn {
+      from { 
+        opacity: 0; 
+        transform: translateY(10px); 
+      }
+      to { 
+        opacity: 1; 
+        transform: translateY(0); 
+      }
+    }
+    
+    /* Optimizations for small iframe */
+    @media (max-width: 480px) {
+      body {
+        padding: 0.5rem;
+      }
+      
+      .feedback-card {
+        padding: 1.5rem;
+        border-radius: 12px;
+      }
+      
+      .feedback-card h1 {
+        font-size: 1.125rem;
+        margin-bottom: 1rem;
+      }
+      
+      textarea {
+        min-height: 100px;
+        padding: 0.625rem;
+      }
+      
+      .submit-btn {
+        padding: 0.625rem 1.25rem;
+      }
+    }
+    
+    /* Extra small iframe optimization */
+    @media (max-height: 300px) {
+      body {
+        min-height: auto;
+        padding: 0.25rem;
+      }
+      
+      .feedback-card {
+        padding: 1rem;
+      }
+      
+      .feedback-card h1 {
+        font-size: 1rem;
+        margin-bottom: 0.75rem;
+      }
+      
+      .form-group {
+        margin-bottom: 1rem;
+      }
+      
+      textarea {
+        min-height: 80px;
+      }
+    }
+  </style>
+
+<script src="https://cdn.amplitude.com/script/3d55f7e7c19d6f084a063c0151297291.js"></script><script>window.amplitude.add(window.sessionReplay.plugin({sampleRate: 1}));window.amplitude.init('3d55f7e7c19d6f084a063c0151297291', {"fetchRemoteConfig":true,"autocapture":true});</script>
+
+  
+</head>
+<body>
+  <div class="feedback-card">
+    <h1>📝 Share Your Feedback</h1>
+    <form id="feedbackForm" action="thankyou.html" method="GET">
+      <div class="form-group">
+        <label for="feedback">Tell us about your experience or report an issue:</label>
+        <textarea 
+          id="feedback" 
+          name="feedback" 
+          placeholder="Please describe your feedback, suggestions, or any issues you've encountered..."
+          required
+        ></textarea>
+      </div>
+      <button type="submit" class="submit-btn" id="submitBtn">
+        Submit Feedback
+      </button>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById('feedbackForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const feedback = document.getElementById('feedback').value.trim();
+      const submitBtn = document.getElementById('submitBtn');
+      
+      if (!feedback) {
+        alert('Please enter your feedback before submitting.');
+        return;
+      }
+      
+      // Disable button and show loading state
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Submitting...';
+      
+      // Track the feedback submission with Amplitude
+      if (window.amplitude) {
+        amplitude.track('Feedback Submitted', {
+          feedback_length: feedback.length,
+          feedback_content: feedback
+        });
+      }
+      
+      // Simulate form submission delay
+      setTimeout(() => {
+        // Redirect to thank you page
+        window.location.href = 'thankyou.html';
+      }, 500);
+    });
+    
+    // Auto-resize textarea
+    const textarea = document.getElementById('feedback');
+    textarea.addEventListener('input', function() {
+      this.style.height = 'auto';
+      this.style.height = this.scrollHeight + 'px';
+    });
+  </script>
+</body>
+</html>

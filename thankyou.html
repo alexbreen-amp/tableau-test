@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Home</title>
+  <title>Feedback Received</title>
   <style>
     body {
       font-family: 'Inter', sans-serif;
@@ -32,6 +32,14 @@
       font-size: 1rem;
       color: #555;
     }
+    a {
+      color: #4a6cf7;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
@@ -40,14 +48,14 @@
 
 <script src="https://cdn.amplitude.com/script/3d55f7e7c19d6f084a063c0151297291.js"></script><script>window.amplitude.add(window.sessionReplay.plugin({sampleRate: 1}));window.amplitude.init('3d55f7e7c19d6f084a063c0151297291', {"fetchRemoteConfig":true,"autocapture":true});</script>
 
-<script src="https://cdn.amplitude.com/script/3d55f7e7c19d6f084a063c0151297291.engagement.js"></script>
-<script>amplitude.add(window.engagement.plugin())</script>
-
+  
 </head>
 <body>
   <div class="card">
-    <h1>Welcome</h1>
-    <p>This is the home page.</p>
+    <h1>✅ Thank you for sharing your feedback!</h1>
+    <p>We're on it. You can view the status of your request in 
+      <a href="https://slack.com/app_redirect?channel=consumption-feedback" target="_blank">#consumption-feedback</a>.
+    </p>
   </div>
 </body>
 </html>
